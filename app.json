@@ -1,0 +1,12 @@
+{
+  "name": "ReactNativeFrontendMasters",
+  "displayName": "ReactNativeFrontendMasters",
+  "expo": {
+    "name": "ReactNativeFrontendMasters",
+    "slug": "ReactNativeFrontendMasters",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
