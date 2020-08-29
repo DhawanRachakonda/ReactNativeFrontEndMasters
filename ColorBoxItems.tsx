@@ -6,11 +6,11 @@ interface IColorBoxProps {
 }
 
 export interface ColorItem {
-  name: string;
+  colorName: string;
   hexCode: string;
 }
 
-const ColorBox = ({ hexCode, name }: ColorItem) => {
+export const ColorBox = ({ hexCode, colorName }: ColorItem) => {
   const colorStyle = {
     backgroundColor: hexCode,
   };
@@ -19,7 +19,7 @@ const ColorBox = ({ hexCode, name }: ColorItem) => {
   return (
     <View style={[colorStyle, styles.containerText]}>
       <Text style={[styles.color, styles.text, { color: textColor }]}>
-        Name: {name} ; Code: {hexCode}
+        Name: {colorName} ; Code: {hexCode}
       </Text>
     </View>
   );
@@ -29,7 +29,7 @@ const ColorBoxItems = ({ colorsList }: IColorBoxProps) => {
   return (
     <FlatList
       data={colorsList}
-      keyExtractor={(item) => item.name}
+      keyExtractor={(item) => item.colorName}
       renderItem={({ item }) => <ColorBox {...item} />}
       ListEmptyComponent={<Text>No Data Found</Text>}
       ListHeaderComponent={<Text style={styles.text}>Solarized</Text>}
