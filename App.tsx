@@ -16,12 +16,12 @@ const App = () => {
       <AppView styleObject={{ ...styles.bold }}>
         Here are some basics of different colors
       </AppView>
-      <AppView styleObject={{ ...styles.cyan, ...styles.center }}>Cyan</AppView>
-      <AppView styleObject={{ ...styles.blue, ...styles.center }}>Blue</AppView>
-      <AppView styleObject={{ ...styles.magenta, ...styles.center }}>
+      <AppView styleObject={{ ...styles.cyan, ...styles.color }}>Cyan</AppView>
+      <AppView styleObject={{ ...styles.blue, ...styles.color }}>Blue</AppView>
+      <AppView styleObject={{ ...styles.magenta, ...styles.color }}>
         Magenta
       </AppView>
-      <AppView styleObject={{ ...styles.orange, ...styles.center }}>
+      <AppView styleObject={{ ...styles.orange, ...styles.color }}>
         Orange
       </AppView>
     </SafeAreaView>
@@ -29,9 +29,15 @@ const App = () => {
 };
 
 const styles = StyleSheet.create({
+  color: {
+    color: '#FFF',
+    fontSize: 18,
+    fontWeight: 'bold',
+  },
   containerText: {
     padding: 10,
     marginBottom: 10,
+    textAlign: 'center',
   },
   center: {
     textAlign: 'center',
