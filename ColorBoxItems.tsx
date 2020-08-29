@@ -14,9 +14,11 @@ const ColorBox = ({ hexCode, name }: ColorItem) => {
   const colorStyle = {
     backgroundColor: hexCode,
   };
+  const textColor =
+    parseInt(hexCode.replace('#', ''), 16) > 0xffffff / 1.1 ? 'black' : 'white';
   return (
     <View style={[colorStyle, styles.containerText]}>
-      <Text style={[styles.color, styles.center]}>
+      <Text style={[styles.color, styles.text, { color: textColor }]}>
         Name: {name} ; Code: {hexCode}
       </Text>
     </View>
@@ -30,6 +32,7 @@ const ColorBoxItems = ({ colorsList }: IColorBoxProps) => {
       keyExtractor={(item) => item.name}
       renderItem={({ item }) => <ColorBox {...item} />}
       ListEmptyComponent={<Text>No Data Found</Text>}
+      ListHeaderComponent={<Text style={styles.text}>Solarized</Text>}
     />
   );
 };
@@ -40,7 +43,8 @@ const styles = StyleSheet.create({
     marginTop: 10,
     fontWeight: 'bold',
   },
-  center: {
+  text: {
+    fontWeight: 'bold',
     textAlign: 'center',
   },
   color: {
