@@ -1,61 +1,43 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode, useEffect, useState } from 'react';
 import { Text, StyleSheet, SafeAreaView, View } from 'react-native';
+
+import ColorBoxItems, { ColorItem } from './ColorBoxItems';
 
 interface IAppViewProps {
   children: ReactNode;
   styleObject: any;
 }
 
-const AppView = ({ children, styleObject }: IAppViewProps) => {
-  return <Text style={[styles.containerText, styleObject]}>{children}</Text>;
-};
+const colorItemsList: ColorItem[] = [
+  { name: 'Cyan', hexCode: '#008B8B' },
+  { name: 'Blue', hexCode: '#1E90FF' },
+  { name: 'Magenta', hexCode: '#FF00FF' },
+  { name: 'Orange', hexCode: '#FFA500' },
+];
 
 const App = () => {
+  const [colors, setColorList] = useState<ColorItem[]>([]);
+
+  useEffect(() => {
+    setColorList(colorItemsList);
+  }, []);
+
   return (
     <SafeAreaView>
-      <AppView styleObject={{ ...styles.bold }}>
-        Here are some basics of different colors
-      </AppView>
-      <AppView styleObject={{ ...styles.cyan, ...styles.color }}>Cyan</AppView>
-      <AppView styleObject={{ ...styles.blue, ...styles.color }}>Blue</AppView>
-      <AppView styleObject={{ ...styles.magenta, ...styles.color }}>
-        Magenta
-      </AppView>
-      <AppView styleObject={{ ...styles.orange, ...styles.color }}>
-        Orange
-      </AppView>
+      <Text style={styles.bold}>Here are some basics of different colors</Text>
+      <ColorBoxItems colorsList={colors} />
     </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
+  bold: {
+    fontWeight: 'bold',
+  },
   color: {
     color: '#FFF',
     fontSize: 18,
     fontWeight: 'bold',
-  },
-  containerText: {
-    padding: 10,
-    marginBottom: 10,
-    textAlign: 'center',
-  },
-  center: {
-    textAlign: 'center',
-  },
-  bold: {
-    fontWeight: 'bold',
-  },
-  cyan: {
-    backgroundColor: '#008B8B',
-  },
-  blue: {
-    backgroundColor: '#1E90FF',
-  },
-  magenta: {
-    backgroundColor: '#FF00FF',
-  },
-  orange: {
-    backgroundColor: '#FFA500',
   },
 });
 
